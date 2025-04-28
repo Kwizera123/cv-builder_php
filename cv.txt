@@ -1,0 +1,20 @@
+
+<?php
+
+// Require composer autoload
+require_once __DIR__ . '/vendor/autoload.php';
+// Create an instance of the class:
+$mpdf = new \Mpdf\Mpdf();
+
+$stylesheet = file_get_contents('style.css');
+
+$mpdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
+$mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);
+
+
+
+// Write some HTML code:
+$mpdf->WriteHTML('<h1>This is a Simple header</h1>');
+
+// Output a PDF file directly to the browser
+$mpdf->Output();
